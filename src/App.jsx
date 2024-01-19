@@ -5,8 +5,8 @@ import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
-  const environment = process.env.ENVIRONMENT || 'dev';
-  const version = `v1.${environment}`;
+  const version_var = process.env.VERSION || 'dev';
+  const version = `1.0.${version_var}`;
 
   return (
     <>
