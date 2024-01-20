@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
-  const version_var = process.env.VERSION || 'dev';
+  const version_var = import.meta.env.VITE_PROJECT_VERSION;
   const version = `1.0.${version_var}`;
 
   return (
@@ -33,7 +33,9 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <p className="version">Version: {version}</p>
+      <p className="version">
+        Version: {version}
+      </p>
     </>
   );
 }

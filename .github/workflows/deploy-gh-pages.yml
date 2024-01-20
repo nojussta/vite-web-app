@@ -35,7 +35,7 @@ jobs:
 
       - name: Build
         env:
-            VERSION: ${{ github.run_number }}
+          VITE_PROJECT_VERSION: ${{ github.run_number }}
         run: npm run build
         
       - name: Setup Pages
