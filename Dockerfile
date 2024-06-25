@@ -2,7 +2,7 @@ FROM node:20-alpine3.17 as build
 
 COPY . .
 
-RUN npm ci --legacy-peer-deps && \
+RUN npm ci && \
     npm run build 
 
 FROM alpine:3.18.2
