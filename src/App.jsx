@@ -4,12 +4,12 @@ import './App.css';
 import TechStack from './components/TechStack';
 import AboutMe from './components/AboutMe';
 import FuturePlans from './components/FuturePlans';
-import Counter from './components/Counter'; // Import the Counter component
+import Counter from './components/Counter';
 
 function App() {
   const [count, setCount] = useState(0);
   const version_var = import.meta.env.VITE_PROJECT_VERSION;
-  const version = `1.0.${version_var}`; // Preserved versioning
+  const version = `1.0.${version_var}`;
 
   const [activeTab, setActiveTab] = useState('tech');
 
@@ -53,10 +53,10 @@ function App() {
       </div>
       {activeTab === 'tech' && <TechStack />}
       {activeTab === 'about' && <AboutMe />}
-      {activeTab === 'counter' && <Counter count={count} setCount={setCount} />}  {/* Pass props to Counter */}
+      {activeTab === 'counter' && <Counter count={count} setCount={setCount} />}  {}
       {activeTab === 'future' && <FuturePlans />}
       <p className="version">
-        <code>{version}</code>  {/* Versioning preserved */}
+        <code>{version}</code>  {}
       </p>
     </div>
   );
