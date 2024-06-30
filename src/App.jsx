@@ -1,42 +1,64 @@
 import React, { useState } from 'react';
-import ReactLogo from './assets/react.svg';
 import ViteLogo from '/vite.svg';
 import './App.css';
+import TechStack from './components/TechStack';
+import AboutMe from './components/AboutMe';
+import FuturePlans from './components/FuturePlans';
+import Counter from './components/Counter';
 
 function App() {
   const [count, setCount] = useState(0);
   const version_var = import.meta.env.VITE_PROJECT_VERSION;
   const version = `1.0.${version_var}`;
 
+  const [activeTab, setActiveTab] = useState('tech');
+
+  const handleTabClick = (tab, event) => {
+    if (event !== null && tab !== null) {
+      event.preventDefault();
+      setActiveTab(tab);
+    } else {
+      throw new Error('Invalid event or tab');
+    }
+  };
+
   return (
-    <>
-      <div className="app">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={ViteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={ReactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1 className="title">Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+    <div className="app">
+      <img src={ViteLogo} className="logo" alt="Vite logo" />
+      <div className="tabs">
+        <button
+          className={`tab ${activeTab === 'tech' ? 'active' : ''}`}
+          onClick={(e) => handleTabClick('tech', e)}
+        >
+          Tech Stack
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-        <p>
-          Additional text for testing purposes
-        </p>
+        <button
+          className={`tab ${activeTab === 'about' ? 'active' : ''}`}
+          onClick={(e) => handleTabClick('about', e)}
+        >
+          About Me
+        </button>
+        <button
+          className={`tab ${activeTab === 'counter' ? 'active' : ''}`}
+          onClick={(e) => handleTabClick('counter', e)}
+        >
+          Counter
+        </button>
+        <button
+          className={`tab ${activeTab === 'future' ? 'active' : ''}`}
+          onClick={(e) => handleTabClick('future', e)}
+        >
+          Future Plans
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {activeTab === 'tech' && <TechStack />}
+      {activeTab === 'about' && <AboutMe />}
+      {activeTab === 'counter' && <Counter count={count} setCount={setCount} />}  {}
+      {activeTab === 'future' && <FuturePlans />}
       <p className="version">
-        <code>{version}</code>
+        <code>{version}</code>  {}
       </p>
-    </>
+    </div>
   );
 }
 
