@@ -1,40 +1,40 @@
-name: "CodeQL"
+# name: "CodeQL"
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-  schedule:
-    - cron: '45 16 * * 1'
+# on:
+#   push:
+#     branches: [ "master" ]
+#   pull_request:
+#     branches: [ "master" ]
+#   schedule:
+#     - cron: '45 16 * * 1'
 
-jobs:
-  analyze:
-    name: Analyze
-    runs-on: 'ubuntu-latest'
-    permissions:
-      security-events: write
-      actions: read
-      contents: read
+# jobs:
+#   analyze:
+#     name: Analyze
+#     runs-on: 'ubuntu-latest'
+#     permissions:
+#       security-events: write
+#       actions: read
+#       contents: read
 
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [ 'javascript-typescript' ]
+#     strategy:
+#       fail-fast: false
+#       matrix:
+#         language: [ 'javascript-typescript' ]
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v4
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: ${{ matrix.language }}
+#     - name: Initialize CodeQL
+#       uses: github/codeql-action/init@v3
+#       with:
+#         languages: ${{ matrix.language }}
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+#     - name: Autobuild
+#       uses: github/codeql-action/autobuild@v3
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
-      with:
-        category: "/language:${{matrix.language}}"
+#     - name: Perform CodeQL Analysis
+#       uses: github/codeql-action/analyze@v3
+#       with:
+#         category: "/language:${{matrix.language}}"
